@@ -56,19 +56,15 @@ export function parseHtml(html: string): GatheredNode {
   const siblingCounts = new Map<string, number>();
 
   if (rootEl) {
-    maxDepth = 0;
     $(rootEl)
       .children()
       .each((_, child) => {
         parseInto(child as Element, root, $, root.path, siblingCounts, 0);
       });
-    console.error(`[DEBUG] Parsing complete. Max depth reached: ${maxDepth}`);
   }
 
   return root;
 }
-
-let maxDepth = 0;
 
 function parseInto(
   el: Element,
@@ -78,7 +74,6 @@ function parseInto(
   siblingCounts: Map<string, number>,
   depth = 0,
 ): void {
-  maxDepth = Math.max(maxDepth, depth);
   if (depth > 200) {
     console.error(
       `RECURSION LIMIT: depth=${depth}, tag=${el.tagName}, path=${parentPath}`,
