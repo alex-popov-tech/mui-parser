@@ -164,3 +164,7 @@ npm run lint      # Lint
 
 - Architecture: [PLAN.md](./PLAN.md)
 - Add detectors: `/create-detector` skill
+
+## License
+
+[MIT](./LICENSE)
