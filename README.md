@@ -18,15 +18,38 @@ Extracts form sections and fields from Material-UI HTML, producing a tree of nod
 ### CLI Commands
 
 ```bash
-# Parse file → stdout
+# From GitHub (npx)
+npx github:alex-popov-tech/mui-parser page.html -o ./output
+
+# Parse file → stdout (JSON only)
 npx tsx src/cli.ts page.html
 
-# Parse file → file
-npx tsx src/cli.ts page.html -o output.json
+# Parse file → folder (JSON + docs)
+npx tsx src/cli.ts page.html -o ./output
 
 # stdin → stdout
 cat page.html | npx tsx src/cli.ts
 ```
+
+### Output Structure
+
+When using `-o`, the tool creates:
+
+```
+./output/
+  parsed.json       # Structured JSON tree
+  doc/              # Detector documentation
+    text-field/
+      about.md
+      output.md
+      usage.md
+      html.md
+    toggle-field/
+      ...
+    (all detectors)
+```
+
+This bundles the parsed result with its documentation, making it self-contained for downstream consumers.
 
 ### Input Example
 

@@ -1,11 +1,14 @@
 {
-  "name": "html-field-parser",
+  "name": "mui-parser",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "html-field-parser": "./src/cli.ts"
+    "mui-parser": "./src/cli.ts"
   },
+  "files": [
+    "src/**/*"
+  ],
   "scripts": {
     "dev": "tsx src/cli.ts",
     "test": "vitest run",
