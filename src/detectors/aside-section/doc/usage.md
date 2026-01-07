@@ -1,24 +1,7 @@
-# Aside Section - Playwright Usage
-
-## Locating
+# Aside Section - Playright Usage
 
 ```typescript
-// From page/stage
-const aside = stage.locateBy('{path}');
-
-// From parent element
-const aside = parentElement.locateBy('{path}');
-```
-
-## Page Object Example
-
-```typescript
-class AsideSectionComponent {
-  constructor(private root: Locator) {}
-
-  // Access nested elements using children paths
-  getChild(childPath: string): Locator {
-    return this.root.locator(childPath);
-  }
-}
+// how to locate
+const container = stage.locateBy('{path}'); // from page
+const container = element.locateBy('{path}'); // from parent element
 ```
