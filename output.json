@@ -1,0 +1,380 @@
+{
+  "type": "section",
+  "kind": "root",
+  "path": "main",
+  "children": [
+    {
+      "type": "field",
+      "kind": "select-field",
+      "path": "[data-testid=\"select-field\"]:has(input[name=\"variant\"])",
+      "meta": {
+        "input": "input[name=\"variant\"]",
+        "options": "#menu-variant .MuiMenuItem-root"
+      }
+    },
+    {
+      "type": "section",
+      "kind": "form-section",
+      "path": "section[class*=\"FormSection_wrapper__\"]:has(h2:text-is(\"Header Variant 2\"))",
+      "meta": {
+        "title": "h2[class*=\"FormSection_title__\"]",
+        "body": "div[class*=\"FormSection_body__\"]",
+        "fields": "[data-testid=\"form-field-wrapper\"]"
+      },
+      "children": [
+        {
+          "type": "field",
+          "kind": "toggle-field",
+          "path": "[data-testid=\"toggle-field\"]:has(input[name=\"headerFullWidthLayout\"])",
+          "meta": {
+            "input": "input[name=\"headerFullWidthLayout\"]"
+          }
+        },
+        {
+          "type": "field",
+          "kind": "image-field",
+          "path": "div[class*=\"ImageField_wrapper\"]:has-text(\"Logo\")",
+          "meta": {
+            "label": "label.MuiInputLabel-root",
+            "preview": "img[class*=\"ImagePreview_previewImage\"]",
+            "fileInput": "input[data-testid=\"file-input\"]",
+            "uploadButton": "[data-testid=\"file-change-action\"]",
+            "removeButton": "[data-testid=\"file-remove-action\"]"
+          }
+        },
+        {
+          "type": "field",
+          "kind": "select-field",
+          "path": "[data-testid=\"select-field\"]:has(input[name=\"logoSize\"])",
+          "meta": {
+            "input": "input[name=\"logoSize\"]",
+            "options": "#menu-logoSize .MuiMenuItem-root"
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "kind": "toggle-field",
+      "path": "[data-testid=\"toggle-field\"]:has(input[name=\"secondaryNavigationEnabled\"])",
+      "meta": {
+        "input": "input[name=\"secondaryNavigationEnabled\"]"
+      }
+    },
+    {
+      "type": "section",
+      "kind": "form-section",
+      "path": "section[class*=\"FormSection_wrapper__\"]:has(h2:text-is(\"Secondary Navigation Dropdown Links\"))",
+      "meta": {
+        "title": "h2[class*=\"FormSection_title__\"]",
+        "body": "div[class*=\"FormSection_body__\"]",
+        "fields": "[data-testid=\"form-field-wrapper\"]"
+      },
+      "children": [
+        {
+          "type": "section",
+          "kind": "dnd-area-section",
+          "path": "[data-testid=\"dnd-droppable-area\"]",
+          "children": [
+            {
+              "type": "section",
+              "kind": "dnd-item-section",
+              "path": "[data-testid=\"dnd-draggable-item\"]",
+              "meta": {
+                "title": "[class*=\"Card_heading__\"]",
+                "body": "[class*=\"Card_body__\"]",
+                "remove": "button:has([data-testid=\"ClearIcon\"])",
+                "collapse": "button:has([data-testid=\"ExpandLessIcon\"])"
+              },
+              "children": [
+                {
+                  "type": "field",
+                  "kind": "text-field",
+                  "path": "[data-testid=\"text-field\"]:has(input[name^=\"secondaryNavigationDropdownLinks.0.text\"])",
+                  "meta": {
+                    "input": "input[name^=\"secondaryNavigationDropdownLinks.0.text\"]"
+                  }
+                },
+                {
+                  "type": "field",
+                  "kind": "toggle-field",
+                  "path": "[data-testid=\"toggle-field\"]:has(input[name=\"secondaryNavigationDropdownLinks.0.openInNewTab\"])",
+                  "meta": {
+                    "input": "input[name=\"secondaryNavigationDropdownLinks.0.openInNewTab\"]"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "kind": "dnd-item-section",
+              "path": "[data-testid=\"dnd-draggable-item\"]",
+              "meta": {
+                "title": "[class*=\"Card_heading__\"]",
+                "body": "[class*=\"Card_body__\"]",
+                "remove": "button:has([data-testid=\"ClearIcon\"])",
+                "collapse": "button:has([data-testid=\"ExpandLessIcon\"])"
+              },
+              "children": [
+                {
+                  "type": "field",
+                  "kind": "text-field",
+                  "path": "[data-testid=\"text-field\"]:has(input[name^=\"secondaryNavigationDropdownLinks.1.text\"])",
+                  "meta": {
+                    "input": "input[name^=\"secondaryNavigationDropdownLinks.1.text\"]"
+                  }
+                },
+                {
+                  "type": "field",
+                  "kind": "toggle-field",
+                  "path": "[data-testid=\"toggle-field\"]:has(input[name=\"secondaryNavigationDropdownLinks.1.openInNewTab\"])",
+                  "meta": {
+                    "input": "input[name=\"secondaryNavigationDropdownLinks.1.openInNewTab\"]"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "kind": "button-field",
+          "path": "button.MuiButton-root:text(\"Add Link\")",
+          "meta": {
+            "label": "Add Link"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "kind": "form-section",
+      "path": "section[class*=\"FormSection_wrapper__\"]:has(h2:text-is(\"Secondary Navigation Links\"))",
+      "meta": {
+        "title": "h2[class*=\"FormSection_title__\"]",
+        "body": "div[class*=\"FormSection_body__\"]",
+        "fields": "[data-testid=\"form-field-wrapper\"]"
+      },
+      "children": [
+        {
+          "type": "section",
+          "kind": "dnd-area-section",
+          "path": "[data-testid=\"dnd-droppable-area\"]",
+          "children": [
+            {
+              "type": "section",
+              "kind": "dnd-item-section",
+              "path": "[data-testid=\"dnd-draggable-item\"]",
+              "meta": {
+                "title": "[class*=\"Card_heading__\"]",
+                "body": "[class*=\"Card_body__\"]",
+                "remove": "button:has([data-testid=\"ClearIcon\"])",
+                "collapse": "button:has([data-testid=\"ExpandLessIcon\"])"
+              },
+              "children": [
+                {
+                  "type": "field",
+                  "kind": "text-field",
+                  "path": "[data-testid=\"text-field\"]:has(input[name^=\"secondaryNavigationLinks.0.text\"])",
+                  "meta": {
+                    "input": "input[name^=\"secondaryNavigationLinks.0.text\"]"
+                  }
+                },
+                {
+                  "type": "field",
+                  "kind": "toggle-field",
+                  "path": "[data-testid=\"toggle-field\"]:has(input[name=\"secondaryNavigationLinks.0.openInNewTab\"])",
+                  "meta": {
+                    "input": "input[name=\"secondaryNavigationLinks.0.openInNewTab\"]"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "kind": "dnd-item-section",
+              "path": "[data-testid=\"dnd-draggable-item\"]",
+              "meta": {
+                "title": "[class*=\"Card_heading__\"]",
+                "body": "[class*=\"Card_body__\"]",
+                "remove": "button:has([data-testid=\"ClearIcon\"])",
+                "collapse": "button:has([data-testid=\"ExpandLessIcon\"])"
+              },
+              "children": [
+                {
+                  "type": "field",
+                  "kind": "text-field",
+                  "path": "[data-testid=\"text-field\"]:has(input[name^=\"secondaryNavigationLinks.1.text\"])",
+                  "meta": {
+                    "input": "input[name^=\"secondaryNavigationLinks.1.text\"]"
+                  }
+                },
+                {
+                  "type": "field",
+                  "kind": "toggle-field",
+                  "path": "[data-testid=\"toggle-field\"]:has(input[name=\"secondaryNavigationLinks.1.openInNewTab\"])",
+                  "meta": {
+                    "input": "input[name=\"secondaryNavigationLinks.1.openInNewTab\"]"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "section",
+              "kind": "dnd-item-section",
+              "path": "[data-testid=\"dnd-draggable-item\"]",
+              "meta": {
+                "title": "[class*=\"Card_heading__\"]",
+                "body": "[class*=\"Card_body__\"]",
+                "remove": "button:has([data-testid=\"ClearIcon\"])",
+                "expand": "button:has([data-testid=\"ExpandMoreIcon\"])"
+              }
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "kind": "button-field",
+          "path": "button.MuiButton-root:text(\"Add Link\")",
+          "meta": {
+            "label": "Add Link"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "kind": "form-section",
+      "path": "section[class*=\"FormSection_wrapper__\"]:has(h2:text-is(\"Alert Banner\"))",
+      "meta": {
+        "title": "h2[class*=\"FormSection_title__\"]",
+        "body": "div[class*=\"FormSection_body__\"]",
+        "fields": "[data-testid=\"form-field-wrapper\"]"
+      },
+      "children": [
+        {
+          "type": "field",
+          "kind": "toggle-field",
+          "path": "[data-testid=\"toggle-field\"]:has(input[name=\"alertBanner.enabled\"])",
+          "meta": {
+            "input": "input[name=\"alertBanner.enabled\"]"
+          }
+        },
+        {
+          "type": "field",
+          "kind": "text-editor-field",
+          "path": "[data-testid=\"text-editor-field\"]:has(label:text-is(\"Text *\"))",
+          "meta": {
+            "label": "label.MuiFormLabel-root",
+            "editor": "div.fr-element.fr-view[contenteditable=\"true\"]",
+            "helperText": "p.MuiFormHelperText-root"
+          }
+        },
+        {
+          "type": "section",
+          "kind": "dnd-area-section",
+          "path": "[data-testid=\"dnd-droppable-area\"]",
+          "children": [
+            {
+              "type": "field",
+              "kind": "cta-button-link",
+              "path": "div.MuiPaper-root[class*=\"Card_wrapper__\"]:has(span:text-is(\"CTA Button Link\"))",
+              "meta": {
+                "enabled": "input[name$=\"enabled\"]",
+                "collapse": "button:has([data-testid=\"ExpandLessIcon\"])",
+                "fields": {
+                  "callToAction": {
+                    "input": "input[name$=\"selectType\"]",
+                    "options": "[aria-labelledby=\"mui-component-select-alertBanner.buttons.0.selectType\"] [role=\"option\"]"
+                  },
+                  "customUrl": "input[name$=\"customUrl\"]",
+                  "customText": "input[name$=\"customText\"]",
+                  "style": {
+                    "buttons": "[role=\"group\"][name$=\"colorStyle\"] button",
+                    "selected": "[role=\"group\"][name$=\"colorStyle\"] button[aria-pressed=\"true\"]"
+                  },
+                  "size": {
+                    "buttons": "[role=\"group\"][name$=\"size\"] button",
+                    "selected": "[role=\"group\"][name$=\"size\"] button[aria-pressed=\"true\"]"
+                  },
+                  "variant": {
+                    "buttons": "[role=\"group\"][name$=\"variant\"] button",
+                    "selected": "[role=\"group\"][name$=\"variant\"] button[aria-pressed=\"true\"]"
+                  },
+                  "openInNewTabEnabled": "input[name$=\"openInNewTabEnabled\"]"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "kind": "select-field",
+          "path": "[data-testid=\"select-field\"]:has(input[name=\"alertBanner.textColor\"])",
+          "meta": {
+            "input": "input[name=\"alertBanner.textColor\"]",
+            "options": "#menu-alertBanner.textColor .MuiMenuItem-root"
+          }
+        },
+        {
+          "type": "field",
+          "kind": "select-field",
+          "path": "[data-testid=\"select-field\"]:has(input[name=\"alertBanner.backgroundColor\"])",
+          "meta": {
+            "input": "input[name=\"alertBanner.backgroundColor\"]",
+            "options": "#menu-alertBanner.backgroundColor .MuiMenuItem-root"
+          }
+        },
+        {
+          "type": "field",
+          "kind": "select-field",
+          "path": "[data-testid=\"select-field\"]:has(input[name=\"alertBanner.position\"])",
+          "meta": {
+            "input": "input[name=\"alertBanner.position\"]",
+            "options": "#menu-alertBanner.position .MuiMenuItem-root"
+          }
+        },
+        {
+          "type": "field",
+          "kind": "toggle-field",
+          "path": "[data-testid=\"toggle-field\"]:has(input[name=\"alertBanner.scrollingEnabled\"])",
+          "meta": {
+            "input": "input[name=\"alertBanner.scrollingEnabled\"]"
+          }
+        }
+      ]
+    },
+    {
+      "type": "field",
+      "kind": "button-field",
+      "path": "button.MuiButton-root:text(\"Back\")",
+      "meta": {
+        "label": "Back"
+      }
+    },
+    {
+      "type": "field",
+      "kind": "button-field",
+      "path": "button.MuiButton-root:text(\"Save\")",
+      "meta": {
+        "label": "Save"
+      }
+    },
+    {
+      "type": "field",
+      "kind": "button-field",
+      "path": "button.MuiButton-root:text(\"Preview\")",
+      "meta": {
+        "label": "Preview"
+      }
+    },
+    {
+      "type": "field",
+      "kind": "button-field",
+      "path": "button.MuiButton-root:text(\"Published\")",
+      "meta": {
+        "label": "Published"
+      }
+    }
+  ]
+}
