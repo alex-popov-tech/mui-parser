@@ -7,7 +7,9 @@ import type { GatheredNode } from "./types";
 
 function walk(node: GatheredNode, depth = 0) {
   console.log(`${"  ".repeat(depth)}${node.path}`);
-  node.children?.forEach((child) => walk(child, depth + 1));
+  for (const child of node.children ?? []) {
+    walk(child, depth + 1);
+  }
 }
 
 program

@@ -36,7 +36,7 @@ describe("aside-section detector", () => {
       const expectedMeta: AsideSectionMeta = {};
 
       expect(result).not.toBeNull();
-      expect(result!.node).toEqual({
+      expect(result?.node).toEqual({
         type: "section",
         kind: "aside-section",
         path: "aside",
@@ -50,8 +50,8 @@ describe("aside-section detector", () => {
 
       expect(result).not.toBeNull();
       // Should return children (the <nav>), not the element itself
-      expect(result!.childContainers).toHaveLength(1);
-      expect(result!.childContainers[0].tagName).toBe("nav");
+      expect(result?.childContainers).toHaveLength(1);
+      expect(result?.childContainers[0].tagName).toBe("nav");
     });
   });
 

@@ -43,7 +43,7 @@ describe("dnd-area-section detector", () => {
       const result = dndAreaSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.node).toEqual({
+      expect(result?.node).toEqual({
         type: "section",
         kind: "dnd-area-section",
         path: '[data-testid="dnd-droppable-area"]',
@@ -55,7 +55,7 @@ describe("dnd-area-section detector", () => {
       const result = dndAreaSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.node.meta).toBeUndefined();
+      expect(result?.node.meta).toBeUndefined();
     });
 
     it("returns draggable items as childContainers", () => {
@@ -63,12 +63,12 @@ describe("dnd-area-section detector", () => {
       const result = dndAreaSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.childContainers).toHaveLength(2);
-      expect($(result!.childContainers[0]).attr("data-testid")).toBe(
-        "dnd-draggable-item"
+      expect(result?.childContainers).toHaveLength(2);
+      expect($(result?.childContainers[0]).attr("data-testid")).toBe(
+        "dnd-draggable-item",
       );
-      expect($(result!.childContainers[1]).attr("data-testid")).toBe(
-        "dnd-draggable-item"
+      expect($(result?.childContainers[1]).attr("data-testid")).toBe(
+        "dnd-draggable-item",
       );
     });
 
@@ -77,7 +77,7 @@ describe("dnd-area-section detector", () => {
       const result = dndAreaSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.childContainers).toHaveLength(0);
+      expect(result?.childContainers).toHaveLength(0);
     });
   });
 

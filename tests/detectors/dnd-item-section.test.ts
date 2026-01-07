@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
+import type { CtaButtonLinkMeta } from "../../src/detectors/cta-button-link";
 import { dndItemSectionDetector } from "../../src/detectors/dnd-item-section";
 import type { DndItemSectionMeta } from "../../src/detectors/dnd-item-section";
-import type { CtaButtonLinkMeta } from "../../src/detectors/cta-button-link";
 import { createContext } from "../helpers";
 
 // Valid DnD item with all optional fields (expanded state with body)
@@ -217,7 +217,7 @@ describe("dnd-item-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node).toEqual({
+      expect(result?.node).toEqual({
         type: "section",
         kind: "dnd-item-section",
         path: '[data-testid="dnd-draggable-item"]',
@@ -239,8 +239,8 @@ describe("dnd-item-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.node.meta).toEqual(expectedMeta);
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.node.meta).toEqual(expectedMeta);
     });
 
     it("detects valid DnD item with title only (minimal case)", () => {
@@ -253,8 +253,8 @@ describe("dnd-item-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.node.meta).toEqual(expectedMeta);
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.node.meta).toEqual(expectedMeta);
     });
 
     it("detects valid DnD item with title + enabled switch", () => {
@@ -269,8 +269,8 @@ describe("dnd-item-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.node.meta).toEqual(expectedMeta);
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.node.meta).toEqual(expectedMeta);
     });
 
     it("detects valid DnD item with title + remove button", () => {
@@ -284,8 +284,8 @@ describe("dnd-item-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.node.meta).toEqual(expectedMeta);
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.node.meta).toEqual(expectedMeta);
     });
 
     it("detects valid DnD item with title + toggle button", () => {
@@ -299,8 +299,8 @@ describe("dnd-item-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.node.meta).toEqual(expectedMeta);
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.node.meta).toEqual(expectedMeta);
     });
 
     it("returns Card_body as childContainer for expanded item", () => {
@@ -308,10 +308,10 @@ describe("dnd-item-section detector", () => {
       const result = dndItemSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.childContainers).toHaveLength(1);
-      expect(result!.childContainers[0].tagName).toBe("div");
-      expect($(result!.childContainers[0]).attr("class")).toContain(
-        "Card_body__"
+      expect(result?.childContainers).toHaveLength(1);
+      expect(result?.childContainers[0].tagName).toBe("div");
+      expect($(result?.childContainers[0]).attr("class")).toContain(
+        "Card_body__",
       );
     });
 
@@ -320,7 +320,7 @@ describe("dnd-item-section detector", () => {
       const result = dndItemSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.childContainers).toHaveLength(0);
+      expect(result?.childContainers).toHaveLength(0);
     });
   });
 
@@ -447,12 +447,12 @@ describe("dnd-item-section detector", () => {
       const result = dndItemSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.node.type).toBe("field");
-      expect(result!.node.kind).toBe("cta-button-link");
-      expect(result!.childContainers).toEqual([]);
+      expect(result?.node.type).toBe("field");
+      expect(result?.node.kind).toBe("cta-button-link");
+      expect(result?.childContainers).toEqual([]);
 
       // Verify CTA meta structure
-      const meta = result!.node.meta as CtaButtonLinkMeta;
+      const meta = result?.node.meta as CtaButtonLinkMeta;
       expect(meta.enabled).toBe('input[name$="enabled"]');
       expect(meta.collapse).toBe('button:has([data-testid="ExpandLessIcon"])');
       expect(meta.fields.callToAction.input).toBe('input[name$="selectType"]');
@@ -463,9 +463,9 @@ describe("dnd-item-section detector", () => {
       const result = dndItemSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.node.type).toBe("section");
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.childContainers).toHaveLength(1);
+      expect(result?.node.type).toBe("section");
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.childContainers).toHaveLength(1);
     });
 
     it("returns dnd-item-section with body for empty items", () => {
@@ -473,9 +473,9 @@ describe("dnd-item-section detector", () => {
       const result = dndItemSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.node.type).toBe("section");
-      expect(result!.node.kind).toBe("dnd-item-section");
-      expect(result!.childContainers).toHaveLength(1); // Card_body exists, just empty
+      expect(result?.node.type).toBe("section");
+      expect(result?.node.kind).toBe("dnd-item-section");
+      expect(result?.childContainers).toHaveLength(1); // Card_body exists, just empty
     });
   });
 });

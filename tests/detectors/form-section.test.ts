@@ -91,7 +91,7 @@ describe("form-section detector", () => {
       };
 
       expect(result).not.toBeNull();
-      expect(result!.node).toEqual({
+      expect(result?.node).toEqual({
         type: "section",
         kind: "form-section",
         path: 'section[class*="FormSection_wrapper__"]:has(h2:text-is("Event Setup"))',
@@ -104,9 +104,9 @@ describe("form-section detector", () => {
       const result = formSectionDetector.detect(el, $);
 
       expect(result).not.toBeNull();
-      expect(result!.childContainers).toHaveLength(1);
-      expect(result!.childContainers[0].tagName).toBe("div");
-      expect($(result!.childContainers[0]).attr("class")).toContain(
+      expect(result?.childContainers).toHaveLength(1);
+      expect(result?.childContainers[0].tagName).toBe("div");
+      expect($(result?.childContainers[0]).attr("class")).toContain(
         "FormSection_body__",
       );
     });

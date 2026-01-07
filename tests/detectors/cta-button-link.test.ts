@@ -238,7 +238,7 @@ describe("cta-button-link detector", () => {
       const meta = result?.node.meta as CtaButtonLinkMeta;
       expect(meta.enabled).toBe('input[name$="enabled"]');
       expect(meta.fields.callToAction.input).toBe('input[name$="selectType"]');
-      expect(meta.fields.callToAction.options).toContain("[role=\"option\"]");
+      expect(meta.fields.callToAction.options).toContain('[role="option"]');
       expect(meta.fields.customUrl).toBe('input[name$="customUrl"]');
       expect(meta.fields.customText).toBe('input[name$="customText"]');
       expect(meta.fields.style.buttons).toBe(

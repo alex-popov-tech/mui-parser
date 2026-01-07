@@ -164,7 +164,7 @@ describe("image-field detector", () => {
 
       expect(result).not.toBeNull();
       expect(result?.node.path).toBe(
-        'div[class*="ImageField_wrapper"]:has-text("Banner Image")'
+        'div[class*="ImageField_wrapper"]:has-text("Banner Image")',
       );
     });
   });

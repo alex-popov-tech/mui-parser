@@ -24,11 +24,14 @@ export const ctaButtonLinkDetector: Detector = {
     // Check for optional expand/collapse buttons in header
     const header = $el.find('[class*="Card_header__"]');
     const hasExpand = header.find('[data-testid="ExpandMoreIcon"]').length > 0;
-    const hasCollapse = header.find('[data-testid="ExpandLessIcon"]').length > 0;
+    const hasCollapse =
+      header.find('[data-testid="ExpandLessIcon"]').length > 0;
 
     const meta: CtaButtonLinkMeta = {
       enabled: 'input[name$="enabled"]',
-      ...(hasExpand && { expand: 'button:has([data-testid="ExpandMoreIcon"])' }),
+      ...(hasExpand && {
+        expand: 'button:has([data-testid="ExpandMoreIcon"])',
+      }),
       ...(hasCollapse && {
         collapse: 'button:has([data-testid="ExpandLessIcon"])',
       }),

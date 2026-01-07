@@ -29,7 +29,8 @@ export interface AutocompleteFieldMeta {
 /**
  * A detected autocomplete node with typed meta.
  */
-export interface AutocompleteFieldNode extends GatheredNode<AutocompleteFieldMeta> {
+export interface AutocompleteFieldNode
+  extends GatheredNode<AutocompleteFieldMeta> {
   kind: "autocomplete-field";
   meta: AutocompleteFieldMeta;
 }

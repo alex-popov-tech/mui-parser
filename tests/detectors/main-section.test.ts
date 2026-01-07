@@ -35,7 +35,7 @@ describe("main-section detector", () => {
       const expectedMeta: MainSectionMeta = {};
 
       expect(result).not.toBeNull();
-      expect(result!.node).toEqual({
+      expect(result?.node).toEqual({
         type: "section",
         kind: "main-section",
         path: "main",
@@ -49,8 +49,8 @@ describe("main-section detector", () => {
 
       expect(result).not.toBeNull();
       // Should return children (the <article>), not the element itself
-      expect(result!.childContainers).toHaveLength(1);
-      expect(result!.childContainers[0].tagName).toBe("article");
+      expect(result?.childContainers).toHaveLength(1);
+      expect(result?.childContainers[0].tagName).toBe("article");
     });
   });
 

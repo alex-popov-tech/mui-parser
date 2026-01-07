@@ -13,6 +13,7 @@
     "test:update": "vitest run --update",
     "lint": "biome check src tests",
     "lint:fix": "biome check --write src tests",
+    "lint:fix:unsafe": "biome check --write --unsafe src tests",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run lint && npm run test",
     "prepare": "husky"

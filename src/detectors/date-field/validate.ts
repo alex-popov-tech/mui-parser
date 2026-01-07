@@ -30,7 +30,7 @@ export function validate(el: Element, $: CheerioAPI): boolean {
 
   // 4. Must contain input with data-testid="date-field" and type="tel"
   const input = inputBase.find(
-    'input.MuiInputBase-input[data-testid="date-field"][type="tel"]'
+    'input.MuiInputBase-input[data-testid="date-field"][type="tel"]',
   );
   if (input.length !== 1) {
     return false;

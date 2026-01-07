@@ -27,7 +27,7 @@ export const dateFieldDetector: Detector = {
     // Extract input name (validation already confirmed it exists)
     const $el = $(el);
     const input = $el.find(
-      'input.MuiInputBase-input[data-testid="date-field"][type="tel"]'
+      'input.MuiInputBase-input[data-testid="date-field"][type="tel"]',
     );
     const inputName = input.attr("name") as string;
     const inputBaseName = extractBaseName(inputName);
