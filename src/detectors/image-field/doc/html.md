@@ -1,10 +1,6 @@
-# Image Field Detector
+# Example HTML
 
-Detects custom ImageField components used for image upload functionality.
-
-## Example HTML
-
-### With image uploaded
+## With image uploaded
 
 ```html
 <div class="ImageField_wrapper__JDqhr">
@@ -22,7 +18,7 @@ Detects custom ImageField components used for image upload functionality.
 </div>
 ```
 
-### Default state (no image)
+## Default state (no image)
 
 ```html
 <div class="ImageField_wrapper__JDqhr">
@@ -35,63 +31,3 @@ Detects custom ImageField components used for image upload functionality.
   </div>
 </div>
 ```
-
-## Playright Usage
-```typescript
-// HOW TO LOCATE
-const container = stage.locateBy('{path}'); // from page
-const container = element.locateBy('{path}'); // from parent element
-
-// HOW TO SET VALUE
-// first you need to upload an image
-await container.locateBy('{fileInput}').upload(args.backgroundImage);
-// then we need to wait for it to load and preview to be shown as sign of successful upload
-await container.locateBy('img').should(be.visible);
-```
-
-## Output
-
-```json
-{
-  "type": "field",
-  "kind": "image-field",
-  "path": "div[class*=\"ImageField_wrapper\"]:has-text(\"Logo\")",
-  "meta": {
-    "label": "label.MuiInputLabel-root",
-    "preview": "img[class*=\"ImagePreview_previewImage\"]",
-    "fileInput": "input[data-testid=\"file-input\"]",
-    "uploadButton": "[data-testid=\"file-change-action\"]",
-    "removeButton": "[data-testid=\"file-remove-action\"]"
-  }
-}
-```
-
-## Meta Fields
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `label` | string | Selector for the label element (relative to `path`). Read text content for field name. |
-| `preview` | string | Selector for the preview image (relative to `path`). Only exists when image is uploaded. |
-| `fileInput` | string | Selector for the hidden file input (relative to `path`). Used for programmatic uploads. |
-| `uploadButton` | string | Selector for the upload/change button (relative to `path`). |
-| `removeButton` | string | Selector for the remove button (relative to `path`). Only exists when image is uploaded. |
-
-## Value Handling
-
-- **Read**: Check if `preview` element exists. If it does, read the `src` attribute to get the image URL.
-- **Write**: Use Playwright's `setInputFiles()` on the `fileInput` selector to upload a new image.
-- **Clear**: Click the `removeButton` to remove the uploaded image.
-
-### State: Image uploaded
-
-When an image is uploaded:
-- `preview` element exists with `src` attribute containing the image URL
-- `removeButton` exists (styled as error/red button)
-- `uploadButton` text is "Change file"
-
-### State: No image (default)
-
-When no image is uploaded:
-- `preview` element does NOT exist
-- `removeButton` does NOT exist
-- `uploadButton` text is "Choose file"
