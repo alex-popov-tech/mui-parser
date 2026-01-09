@@ -33,8 +33,11 @@ export function validate(el: Element, $: CheerioAPI): boolean {
     return false;
   }
 
-  // 5. Must contain input.MuiInputBase-input with type="text"
-  const input = inputBase.find('input.MuiInputBase-input[type="text"]');
+  // 5. Must contain input.MuiInputBase-input with text-like type
+  // Accepts: text, url, email, tel, search
+  const textLikeSelector =
+    'input.MuiInputBase-input:is([type="text"], [type="url"], [type="email"], [type="tel"], [type="search"])';
+  const input = inputBase.find(textLikeSelector);
   if (input.length !== 1) {
     return false;
   }

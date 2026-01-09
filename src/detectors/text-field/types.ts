@@ -1,6 +1,11 @@
 import type { GatheredNode } from "../../types";
 
 /**
+ * Supported text-like input types.
+ */
+export type TextLikeInputType = "text" | "url" | "email" | "tel" | "search";
+
+/**
  * Meta fields for text-field components.
  */
 export interface TextFieldMeta {
@@ -9,6 +14,11 @@ export interface TextFieldMeta {
    * Value: Read from the input's `value` attribute.
    */
   input: string;
+
+  /**
+   * The HTML input type (text, url, email, tel, search).
+   */
+  inputType: TextLikeInputType;
 }
 
 /**

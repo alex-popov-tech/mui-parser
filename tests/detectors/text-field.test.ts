@@ -26,6 +26,38 @@ const VALID_TEXT_FIELD_SIMPLE_NAME = `<div class="MuiFormControl-root MuiTextFie
   </div>
 </div>`;
 
+// Valid text field with type="url"
+const VALID_URL_FIELD = `<div class="MuiFormControl-root MuiTextField-root" data-testid="text-field">
+  <label class="MuiInputLabel-root">Website</label>
+  <div class="MuiInputBase-root MuiOutlinedInput-root">
+    <input type="url" name="website.values.en" class="MuiInputBase-input MuiOutlinedInput-input" value="">
+  </div>
+</div>`;
+
+// Valid text field with type="email"
+const VALID_EMAIL_FIELD = `<div class="MuiFormControl-root MuiTextField-root" data-testid="text-field">
+  <label class="MuiInputLabel-root">Email</label>
+  <div class="MuiInputBase-root MuiOutlinedInput-root">
+    <input type="email" name="email" class="MuiInputBase-input MuiOutlinedInput-input" value="">
+  </div>
+</div>`;
+
+// Valid text field with type="tel"
+const VALID_TEL_FIELD = `<div class="MuiFormControl-root MuiTextField-root" data-testid="text-field">
+  <label class="MuiInputLabel-root">Phone</label>
+  <div class="MuiInputBase-root MuiOutlinedInput-root">
+    <input type="tel" name="phone" class="MuiInputBase-input MuiOutlinedInput-input" value="">
+  </div>
+</div>`;
+
+// Valid text field with type="search"
+const VALID_SEARCH_FIELD = `<div class="MuiFormControl-root MuiTextField-root" data-testid="text-field">
+  <label class="MuiInputLabel-root">Search</label>
+  <div class="MuiInputBase-root MuiOutlinedInput-root">
+    <input type="search" name="query" class="MuiInputBase-input MuiOutlinedInput-input" value="">
+  </div>
+</div>`;
+
 // Invalid: wrong tag (span instead of div)
 const WRONG_TAG = `<span class="MuiTextField-root" data-testid="text-field">
   <div class="MuiInputBase-root">
@@ -73,8 +105,8 @@ const EMPTY_INPUT_NAME = `<div class="MuiTextField-root" data-testid="text-field
   </div>
 </div>`;
 
-// Invalid: wrong input type
-const WRONG_INPUT_TYPE = `<div class="MuiTextField-root" data-testid="text-field">
+// Invalid: unsupported input type (password is not text-like)
+const UNSUPPORTED_INPUT_TYPE = `<div class="MuiTextField-root" data-testid="text-field">
   <div class="MuiInputBase-root">
     <input type="password" name="test" class="MuiInputBase-input">
   </div>
@@ -88,6 +120,7 @@ describe("text-field detector", () => {
 
       const expectedMeta: TextFieldMeta = {
         input: 'input[name^="localisedName"]',
+        inputType: "text",
       };
 
       expect(result).toEqual({
@@ -107,6 +140,7 @@ describe("text-field detector", () => {
 
       const expectedMeta: TextFieldMeta = {
         input: 'input[name^="username"]',
+        inputType: "text",
       };
 
       expect(result).toEqual({
@@ -114,6 +148,86 @@ describe("text-field detector", () => {
           type: "field",
           kind: "text-field",
           path: '[data-testid="text-field"]:has(input[name^="username"])',
+          meta: expectedMeta,
+        },
+        childContainers: [],
+      });
+    });
+
+    it("detects text field with type=url", () => {
+      const { el, $ } = createContext(VALID_URL_FIELD);
+      const result = textFieldDetector.detect(el, $);
+
+      const expectedMeta: TextFieldMeta = {
+        input: 'input[name^="website"]',
+        inputType: "url",
+      };
+
+      expect(result).toEqual({
+        node: {
+          type: "field",
+          kind: "text-field",
+          path: '[data-testid="text-field"]:has(input[name^="website"])',
+          meta: expectedMeta,
+        },
+        childContainers: [],
+      });
+    });
+
+    it("detects text field with type=email", () => {
+      const { el, $ } = createContext(VALID_EMAIL_FIELD);
+      const result = textFieldDetector.detect(el, $);
+
+      const expectedMeta: TextFieldMeta = {
+        input: 'input[name^="email"]',
+        inputType: "email",
+      };
+
+      expect(result).toEqual({
+        node: {
+          type: "field",
+          kind: "text-field",
+          path: '[data-testid="text-field"]:has(input[name^="email"])',
+          meta: expectedMeta,
+        },
+        childContainers: [],
+      });
+    });
+
+    it("detects text field with type=tel", () => {
+      const { el, $ } = createContext(VALID_TEL_FIELD);
+      const result = textFieldDetector.detect(el, $);
+
+      const expectedMeta: TextFieldMeta = {
+        input: 'input[name^="phone"]',
+        inputType: "tel",
+      };
+
+      expect(result).toEqual({
+        node: {
+          type: "field",
+          kind: "text-field",
+          path: '[data-testid="text-field"]:has(input[name^="phone"])',
+          meta: expectedMeta,
+        },
+        childContainers: [],
+      });
+    });
+
+    it("detects text field with type=search", () => {
+      const { el, $ } = createContext(VALID_SEARCH_FIELD);
+      const result = textFieldDetector.detect(el, $);
+
+      const expectedMeta: TextFieldMeta = {
+        input: 'input[name^="query"]',
+        inputType: "search",
+      };
+
+      expect(result).toEqual({
+        node: {
+          type: "field",
+          kind: "text-field",
+          path: '[data-testid="text-field"]:has(input[name^="query"])',
           meta: expectedMeta,
         },
         childContainers: [],
@@ -157,8 +271,8 @@ describe("text-field detector", () => {
       expect(textFieldDetector.detect(el, $)).toBeNull();
     });
 
-    it("rejects wrong input type", () => {
-      const { el, $ } = createContext(WRONG_INPUT_TYPE);
+    it("rejects unsupported input type (password)", () => {
+      const { el, $ } = createContext(UNSUPPORTED_INPUT_TYPE);
       expect(textFieldDetector.detect(el, $)).toBeNull();
     });
   });

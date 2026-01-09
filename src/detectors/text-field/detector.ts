@@ -1,7 +1,7 @@
 import type { CheerioAPI } from "cheerio";
 import type { Element } from "domhandler";
 import type { DetectionResult, Detector } from "../../types";
-import type { TextFieldMeta } from "./types";
+import type { TextFieldMeta, TextLikeInputType } from "./types";
 import { validate } from "./validate";
 
 /**
@@ -16,6 +16,10 @@ function extractBaseName(fullName: string): string {
   return fullName;
 }
 
+// Selector for text-like input types
+const TEXT_LIKE_SELECTOR =
+  'input.MuiInputBase-input:is([type="text"], [type="url"], [type="email"], [type="tel"], [type="search"])';
+
 export const textFieldDetector: Detector = {
   name: "text-field",
 
@@ -24,14 +28,16 @@ export const textFieldDetector: Detector = {
       return null;
     }
 
-    // Extract input name (validation already confirmed it exists)
+    // Extract input name and type (validation already confirmed it exists)
     const $el = $(el);
-    const input = $el.find('input.MuiInputBase-input[type="text"]');
+    const input = $el.find(TEXT_LIKE_SELECTOR);
     const inputName = input.attr("name") as string;
+    const inputType = (input.attr("type") as TextLikeInputType) || "text";
     const inputBaseName = extractBaseName(inputName);
 
     const meta: TextFieldMeta = {
       input: `input[name^="${inputBaseName}"]`,
+      inputType,
     };
 
     return {
