@@ -54,30 +54,38 @@ program
     "-o, --output <folder>",
     "Output folder (creates parsed.json and doc/)",
   )
-  .action((input: string | undefined, options: { output?: string }) => {
-    let html: string;
+  .option("-d, --debug", "Enable debug output")
+  .action(
+    (
+      input: string | undefined,
+      options: { output?: string; debug?: boolean },
+    ) => {
+      let html: string;
 
-    if (input) {
-      html = readFileSync(input, "utf-8");
-    } else if (!process.stdin.isTTY) {
-      html = readFileSync(0, "utf-8"); // Read from stdin
-    } else {
-      console.error("You must provide an input file or pipe HTML to stdin");
-      process.exit(1);
-    }
+      if (input) {
+        html = readFileSync(input, "utf-8");
+      } else if (!process.stdin.isTTY) {
+        html = readFileSync(0, "utf-8"); // Read from stdin
+      } else {
+        console.error("You must provide an input file or pipe HTML to stdin");
+        process.exit(1);
+      }
 
-    const result = parseHtml(html);
-    walk(result);
-    const json = JSON.stringify(result, null, 2);
+      const result = parseHtml(html);
+      if (options.debug) {
+        walk(result);
+      }
+      const json = JSON.stringify(result, null, 2);
 
-    if (options.output) {
-      const outputFolder = options.output;
-      mkdirSync(outputFolder, { recursive: true });
-      writeFileSync(join(outputFolder, "parsed.json"), json);
-      copyDetectorDocs(outputFolder);
-    } else {
-      console.log(json);
-    }
-  });
+      if (options.output) {
+        const outputFolder = options.output;
+        mkdirSync(outputFolder, { recursive: true });
+        writeFileSync(join(outputFolder, "parsed.json"), json);
+        copyDetectorDocs(outputFolder);
+      } else {
+        console.log(json);
+      }
+    },
+  );
 
 program.parse();
