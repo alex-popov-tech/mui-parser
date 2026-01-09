@@ -6,7 +6,7 @@
 {
   "type": "field",
   "kind": "text-editor-field",
-  "path": "[data-testid=\"text-editor-field\"]:has(label:text-is(\"Date and Venue Info\"))",
+  "path": "[data-testid=\"text-editor-field\"]:has(label:has-text(\"Date and Venue Info\"))",
   "meta": {
     "label": "label.MuiFormLabel-root",
     "editor": "div.fr-element.fr-view[contenteditable=\"true\"]",
