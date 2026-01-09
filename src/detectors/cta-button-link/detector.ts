@@ -12,15 +12,6 @@ export const ctaButtonLinkDetector: Detector = {
 
     const $el = $(el);
 
-    // Extract input name from the select to derive base path
-    const selectInput = $el.find('[data-testid="select-field"] input');
-    const selectInputName = selectInput.attr("name") || "";
-    // selectInputName is like "alertBanner.buttons.0.selectType"
-    // We need the id for the portaled options menu
-    const selectCombobox = $el.find('[role="combobox"]');
-    const selectId = selectCombobox.attr("id") || "";
-    // selectId is like "mui-component-select-alertBanner.buttons.0.selectType"
-
     // Check for optional expand/collapse buttons in header
     const header = $el.find('[class*="Card_header__"]');
     const hasExpand = header.find('[data-testid="ExpandMoreIcon"]').length > 0;
@@ -37,11 +28,9 @@ export const ctaButtonLinkDetector: Detector = {
       }),
       fields: {
         callToAction: {
-          input: 'input[name$="selectType"]',
-          // Options are portaled, so we use the full ID reference
-          options: selectId
-            ? `[aria-labelledby="${selectId}"] [role="option"]`
-            : '[role="listbox"] [role="option"]',
+          input: '[data-testid="select-field"]:has(input[name$="selectType"])',
+          // Options are portaled to document root in a MuiMenu with id="menu-{inputName}"
+          options: '[role="presentation"][id$="selectType"] li',
         },
         customUrl: 'input[name$="customUrl"]',
         customText: 'input[name$="customText"]',

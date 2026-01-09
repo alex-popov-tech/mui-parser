@@ -9,8 +9,8 @@
     "enabled": "input[name$=\"enabled\"]",
     "fields": {
       "callToAction": {
-        "input": "input[name$=\"selectType\"]",
-        "options": "[aria-labelledby=\"mui-component-select-alertBanner.buttons.0.selectType\"] [role=\"option\"]"
+        "input": "[data-testid=\"select-field\"]:has(input[name$=\"selectType\"])",
+        "options": "[role=\"presentation\"][id$=\"selectType\"] li"
       },
       "customUrl": "input[name$=\"customUrl\"]",
       "customText": "input[name$=\"customText\"]",
@@ -37,8 +37,8 @@
 | Field | Type | Description |
 |-------|------|-------------|
 | `enabled` | string | Selector for enabled toggle in card header (relative to `path`) |
-| `fields.callToAction.input` | string | Selector for Call To Action Link select input (relative to `path`) |
-| `fields.callToAction.options` | string | Selector for dropdown options (absolute, portaled to document root) |
+| `fields.callToAction.input` | string | Selector for Call To Action Link select trigger (relative to `path`) |
+| `fields.callToAction.options` | string | Selector for dropdown option items (absolute, portaled to document root) |
 | `fields.customUrl` | string | Selector for URL/email/phone text input (relative to `path`) |
 | `fields.customText` | string | Selector for CTA button text input (relative to `path`) |
 | `fields.style.buttons` | string | Selector for all style toggle buttons (relative to `path`) |

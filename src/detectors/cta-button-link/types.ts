@@ -39,9 +39,9 @@ export interface CtaButtonLinkMeta {
      * Call To Action Link dropdown (required).
      */
     callToAction: {
-      /** Selector for hidden select input (relative to path). */
+      /** Selector for select field trigger (relative to path). */
       input: string;
-      /** Selector for dropdown options (absolute, portaled to document root). */
+      /** Selector for dropdown option items (absolute, portaled to document root). */
       options: string;
     };
 

@@ -455,7 +455,9 @@ describe("dnd-item-section detector", () => {
       const meta = result?.node.meta as CtaButtonLinkMeta;
       expect(meta.enabled).toBe('input[name$="enabled"]');
       expect(meta.collapse).toBe('button:has([data-testid="ExpandLessIcon"])');
-      expect(meta.fields.callToAction.input).toBe('input[name$="selectType"]');
+      expect(meta.fields.callToAction.input).toBe(
+        '[data-testid="select-field"]:has(input[name$="selectType"])',
+      );
     });
 
     it("returns dnd-item-section for plain items (not CTA)", () => {
