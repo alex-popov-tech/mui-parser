@@ -20,19 +20,27 @@ export const textEditorFieldDetector: Detector = {
     const $el = $(el);
     const label = $el.find("label.MuiFormLabel-root");
     const labelText = label.text().trim();
-    const escapedLabel = escapeLabelForSelector(labelText);
 
     const meta: TextEditorFieldMeta = {
-      label: "label.MuiFormLabel-root",
       editor: 'div.fr-element.fr-view[contenteditable="true"]',
       helperText: "p.MuiFormHelperText-root",
     };
+
+    // Only include label selector when label exists
+    if (labelText) {
+      meta.label = "label.MuiFormLabel-root";
+    }
+
+    // Use label-based path when label exists, simple path otherwise
+    const path = labelText
+      ? `[data-testid="text-editor-field"]:has(label:text-is("${escapeLabelForSelector(labelText)}"))`
+      : '[data-testid="text-editor-field"]';
 
     return {
       node: {
         type: "field",
         kind: "text-editor-field",
-        path: `[data-testid="text-editor-field"]:has(label:text-is("${escapedLabel}"))`,
+        path,
         meta,
       },
       childContainers: [],

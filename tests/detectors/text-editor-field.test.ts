@@ -59,7 +59,7 @@ const INVALID_WRONG_TESTID = `
 </div>
 `;
 
-const INVALID_MISSING_LABEL = `
+const VALID_LABELLESS = `
 <div class="MuiFormControl-root MuiFormControl-fullWidth" data-testid="text-editor-field">
   <div class="fr-custom" data-testid="text-editor">
     <div class="fr-box">
@@ -68,6 +68,7 @@ const INVALID_MISSING_LABEL = `
       </div>
     </div>
   </div>
+  <p class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1lzxs8f"></p>
 </div>
 `;
 
@@ -136,16 +137,25 @@ describe("text-editor-field detector", () => {
         '[data-testid="text-editor-field"]:has(label:text-is("Description"))',
       );
     });
+
+    it("detects labelless variant (optional label)", () => {
+      const { el, $ } = createContext(VALID_LABELLESS);
+      const result = textEditorFieldDetector.detect(el, $);
+
+      expect(result).not.toBeNull();
+      expect(result?.node.kind).toBe("text-editor-field");
+      expect(result?.node.path).toBe('[data-testid="text-editor-field"]');
+      expect(result?.node.meta).not.toHaveProperty("label");
+      expect(result?.node.meta).toEqual({
+        editor: 'div.fr-element.fr-view[contenteditable="true"]',
+        helperText: "p.MuiFormHelperText-root",
+      });
+    });
   });
 
   describe("strict validation rejects invalid structures", () => {
     it("rejects wrong data-testid", () => {
       const { el, $ } = createContext(INVALID_WRONG_TESTID);
-      expect(textEditorFieldDetector.detect(el, $)).toBeNull();
-    });
-
-    it("rejects missing label", () => {
-      const { el, $ } = createContext(INVALID_MISSING_LABEL);
       expect(textEditorFieldDetector.detect(el, $)).toBeNull();
     });
 

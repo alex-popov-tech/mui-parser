@@ -7,8 +7,9 @@ export interface TextEditorFieldMeta {
   /**
    * Selector for the label element (relative to path).
    * Value: Read the text content to get field name.
+   * Optional: Only present when the HTML contains a label element.
    */
-  label: string;
+  label?: string;
 
   /**
    * Selector for the contenteditable editor element (relative to path).

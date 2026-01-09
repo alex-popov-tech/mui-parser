@@ -24,19 +24,7 @@ export function validate(el: Element, $: CheerioAPI): boolean {
     return false;
   }
 
-  // 4. Must contain a label.MuiFormLabel-root
-  const label = $el.find("label.MuiFormLabel-root");
-  if (label.length !== 1) {
-    return false;
-  }
-
-  // 5. Must have non-empty label text for unique identification
-  const labelText = label.text().trim();
-  if (!labelText) {
-    return false;
-  }
-
-  // 6. Must contain div[data-testid="text-editor"] with fr-custom class
+  // 4. Must contain div[data-testid="text-editor"] with fr-custom class
   const textEditorWrapper = $el.find(
     'div[data-testid="text-editor"].fr-custom',
   );
@@ -44,13 +32,13 @@ export function validate(el: Element, $: CheerioAPI): boolean {
     return false;
   }
 
-  // 7. Must contain div.fr-box (Froala editor container)
+  // 5. Must contain div.fr-box (Froala editor container)
   const froalaBox = textEditorWrapper.find("div.fr-box");
   if (froalaBox.length !== 1) {
     return false;
   }
 
-  // 8. Must contain contenteditable div.fr-element.fr-view
+  // 6. Must contain contenteditable div.fr-element.fr-view
   const editor = froalaBox.find(
     'div.fr-element.fr-view[contenteditable="true"]',
   );
