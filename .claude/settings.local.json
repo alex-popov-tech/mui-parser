@@ -9,7 +9,9 @@
       "Bash(mkdir:*)",
       "Bash(npx tsx:*)",
       "Skill(create-detector)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Skill(typescript-detector)",
+      "Bash(npm run compile:*)"
     ]
   }
 }
