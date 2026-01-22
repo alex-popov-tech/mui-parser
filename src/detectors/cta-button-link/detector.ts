@@ -30,7 +30,7 @@ export const ctaButtonLinkDetector: Detector = {
         callToAction: {
           input: '[data-testid="select-field"]:has(input[name$="selectType"])',
           // Options are portaled to document root in a MuiMenu with id="menu-{inputName}"
-          options: '[role="presentation"][id$="selectType"] li',
+          options: '[role="presentation"][id$="selectType"] [role="option"]',
         },
         customUrl: 'input[name$="customUrl"]',
         customText: 'input[name$="customText"]',

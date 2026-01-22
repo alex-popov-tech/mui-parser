@@ -241,7 +241,7 @@ describe("cta-button-link detector", () => {
         '[data-testid="select-field"]:has(input[name$="selectType"])',
       );
       expect(meta.fields.callToAction.options).toBe(
-        '[role="presentation"][id$="selectType"] li',
+        '[role="presentation"][id$="selectType"] [role="option"]',
       );
       expect(meta.fields.customUrl).toBe('input[name$="customUrl"]');
       expect(meta.fields.customText).toBe('input[name$="customText"]');

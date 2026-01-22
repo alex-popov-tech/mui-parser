@@ -10,7 +10,7 @@
     "fields": {
       "callToAction": {
         "input": "[data-testid=\"select-field\"]:has(input[name$=\"selectType\"])",
-        "options": "[role=\"presentation\"][id$=\"selectType\"] li"
+        "options": "[role=\"presentation\"][id$=\"selectType\"] [role=\"option\"]"
       },
       "customUrl": "input[name$=\"customUrl\"]",
       "customText": "input[name$=\"customText\"]",
