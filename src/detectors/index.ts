@@ -8,6 +8,7 @@ import { dndAreaSectionDetector } from "./dnd-area-section";
 import { dndItemSectionDetector } from "./dnd-item-section";
 import { formSectionDetector } from "./form-section";
 import { imageFieldDetector } from "./image-field";
+import { linkFieldDetector } from "./link-field";
 import { mainSectionDetector } from "./main-section";
 import { selectFieldDetector } from "./select-field";
 import { textEditorFieldDetector } from "./text-editor-field";
@@ -29,6 +30,7 @@ export const detectors: Detector[] = [
   autocompleteFieldDetector,
   imageFieldDetector,
   buttonFieldDetector,
+  linkFieldDetector,
 ];
 
 // Re-export detector types
@@ -54,6 +56,7 @@ export type {
 } from "./dnd-item-section";
 export type { FormSectionMeta, FormSectionNode } from "./form-section";
 export type { ImageFieldMeta, ImageFieldNode } from "./image-field";
+export type { LinkFieldMeta, LinkFieldNode } from "./link-field";
 export type { MainSectionMeta, MainSectionNode } from "./main-section";
 export type { SelectFieldMeta, SelectFieldNode } from "./select-field";
 export type {
