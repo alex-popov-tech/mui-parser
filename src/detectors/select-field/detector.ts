@@ -18,7 +18,7 @@ export const selectFieldDetector: Detector = {
 
     const meta: SelectFieldMeta = {
       input: `input[name="${inputName}"]`,
-      options: `#menu-${inputName} .MuiMenuItem-root`,
+      options: `[role="presentation"]#menu-${inputName} [role="option"]`,
     };
 
     return {

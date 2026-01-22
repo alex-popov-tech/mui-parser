@@ -23,9 +23,9 @@
 
 ## Dropdown Menu (when opened)
 
-The options appear in a separate MuiMenu at the document root. **Important:** The menu container `id` follows the pattern `menu-{fieldName}` where `fieldName` is the `name` attribute of the hidden input.
+The options appear in a separate MuiMenu at the document root. **Important:** The menu container has `role="presentation"` and its `id` follows the pattern `menu-{fieldName}` where `fieldName` is the `name` attribute of the hidden input. Each option has `role="option"`.
 
-For `input[name="type"]`, the menu container is `#menu-type`:
+For `input[name="type"]`, the selector is `[role="presentation"]#menu-type [role="option"]`:
 
 ```html
 <div role="presentation" id="menu-type" class="MuiPopover-root MuiMenu-root MuiModal-root css-1sucic7">

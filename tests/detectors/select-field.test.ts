@@ -71,7 +71,7 @@ describe("select-field detector", () => {
 
       const expectedMeta: SelectFieldMeta = {
         input: 'input[name="type"]',
-        options: "#menu-type .MuiMenuItem-root",
+        options: '[role="presentation"]#menu-type [role="option"]',
       };
 
       expect(result).toEqual({

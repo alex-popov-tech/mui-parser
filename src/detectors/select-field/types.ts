@@ -11,7 +11,7 @@ export interface SelectFieldMeta {
   input: string;
   /**
    * Selector for dropdown option items (absolute, at document root).
-   * Pattern: `#menu-{fieldName} .MuiMenuItem-root` where fieldName is from input[name].
+   * Pattern: `[role="presentation"]#menu-{fieldName} [role="option"]` where fieldName is from input[name].
    * Each option has `data-value` attribute with the actual value.
    */
   options: string;

@@ -7,7 +7,7 @@
   "path": "[data-testid=\"select-field\"]:has(input[name=\"type\"])",
   "meta": {
     "input": "input[name=\"type\"]",
-    "options": "#menu-type .MuiMenuItem-root"
+    "options": "[role=\"presentation\"]#menu-type [role=\"option\"]"
   }
 }
 ```
