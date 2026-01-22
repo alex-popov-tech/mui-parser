@@ -10,7 +10,7 @@ export interface ToggleFieldMeta {
    */
   input: string;
   /**
-   * Selector for the label element (relative to path).
+   * The toggle's text label.
    * Optional: Only present when the HTML contains a label element.
    */
   label?: string;

@@ -21,7 +21,7 @@ export const toggleFieldDetector: Detector = {
     };
 
     if (labelText) {
-      meta.label = ".MuiFormControlLabel-label";
+      meta.label = labelText;
     }
 
     return {
