@@ -54,9 +54,8 @@ export const dndItemSectionDetector: Detector = {
       ...(hasExpand && {
         expand: 'button:has([data-testid="ExpandMoreIcon"])',
       }),
-      ...((hasCollapse || hasExpand) && {
+      ...(hasCollapse && {
         collapse: 'button:has([data-testid="ExpandLessIcon"])',
-        expand: 'button:has([data-testid="ExpandMoreIcon"])',
       }),
     };
 
