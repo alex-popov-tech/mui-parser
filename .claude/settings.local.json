@@ -11,7 +11,12 @@
       "Skill(create-detector)",
       "Bash(find:*)",
       "Skill(typescript-detector)",
-      "Bash(npm run compile:*)"
+      "Bash(npm run compile:*)",
+      "WebSearch",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "WebFetch(domain:news.ycombinator.com)",
+      "WebFetch(domain:www.aifreeapi.com)"
     ]
   }
 }
