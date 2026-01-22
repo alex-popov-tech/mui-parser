@@ -87,6 +87,7 @@ describe("toggle-field detector", () => {
 
       const expectedMeta: ToggleFieldMeta = {
         input: 'input[name="headerFullWidthLayout"]',
+        label: ".MuiFormControlLabel-label",
       };
 
       expect(result).toEqual({

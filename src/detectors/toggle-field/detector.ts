@@ -13,10 +13,16 @@ export const toggleFieldDetector: Detector = {
     const $el = $(el);
     const input = $el.find('.MuiSwitch-switchBase input[type="checkbox"]');
     const inputName = input.attr("name") as string;
+    const label = $el.find(".MuiFormControlLabel-label");
+    const labelText = label.text().trim();
 
     const meta: ToggleFieldMeta = {
       input: `input[name="${inputName}"]`,
     };
+
+    if (labelText) {
+      meta.label = ".MuiFormControlLabel-label";
+    }
 
     return {
       node: {

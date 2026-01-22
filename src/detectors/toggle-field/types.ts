@@ -9,6 +9,11 @@ export interface ToggleFieldMeta {
    * State: Check parent .MuiSwitch-switchBase for .Mui-checked class (present = ON, absent = OFF)
    */
   input: string;
+  /**
+   * Selector for the label element (relative to path).
+   * Optional: Only present when the HTML contains a label element.
+   */
+  label?: string;
 }
 
 /**
