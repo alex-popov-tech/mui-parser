@@ -33,7 +33,7 @@ export const textEditorFieldDetector: Detector = {
 
     // Use label-based path when label exists, simple path otherwise
     const path = labelText
-      ? `[data-testid="text-editor-field"]:has(label:has-text("${escapeLabelForSelector(labelText)}"))`
+      ? `[data-testid="text-editor-field"]:has(label:text-is("${escapeLabelForSelector(labelText)}"))`
       : '[data-testid="text-editor-field"]';
 
     return {
