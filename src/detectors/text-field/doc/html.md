@@ -1,6 +1,24 @@
 # Example HTML
 
-## Text Input (type="text")
+## Simple Name (type="text")
+
+```html
+<div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-11n4w43" data-testid="text-field">
+  <label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-required" data-shrink="true" for=":r1q:" id=":r1q:-label">
+    Group Name
+    <span aria-hidden="true" class="MuiFormLabel-asterisk MuiInputLabel-asterisk css-3fe08"> *</span>
+  </label>
+  <div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1rgex39">
+    <input aria-invalid="false" aria-describedby=":r1q:-helper-text" id=":r1q:" name="groupTitle" required="" type="text" dir="auto" maxlength="20" class="MuiInputBase-input MuiOutlinedInput-input css-13ny0hi" value="sname">
+    <fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-igs3ac">
+      <legend class="css-14lo706"><span>Group Name *</span></legend>
+    </fieldset>
+  </div>
+  <p class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled Mui-required css-1lzxs8f" id=":r1q:-helper-text"></p>
+</div>
+```
+
+## Localized Name (type="text")
 
 ```html
 <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-11n4w43" data-testid="text-field">

@@ -1,5 +1,30 @@
 # Example HTML
 
+## Simple Name
+
+```html
+<div class="MuiFormControl-root MuiTextField-root">
+  <label class="MuiFormLabel-root MuiInputLabel-root">Birth Date</label>
+  <div class="MuiInputBase-root MuiOutlinedInput-root">
+    <input
+      name="birthDate"
+      placeholder="dd/mm/yyyy"
+      type="tel"
+      data-testid="date-field"
+      class="MuiInputBase-input MuiOutlinedInput-input"
+      value=""
+    />
+    <div class="MuiInputAdornment-root">
+      <button aria-label="Choose date">
+        <svg data-testid="CalendarIcon">...</svg>
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+## Dotted Name (localized/array)
+
 ```html
 <div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-11n4w43">
   <label

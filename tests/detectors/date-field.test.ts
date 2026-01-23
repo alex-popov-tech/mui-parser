@@ -94,14 +94,15 @@ describe("date-field detector", () => {
       const result = dateFieldDetector.detect(el, $);
 
       const expectedMeta: DateFieldMeta = {
-        input: 'input[name^="date.start"]',
+        input: 'input[name^="date"]',
+        label: "Start Date",
       };
 
       expect(result).toEqual({
         node: {
           type: "field",
           kind: "date-field",
-          path: '.MuiTextField-root:has(input[data-testid="date-field"][name^="date.start"])',
+          path: '.MuiTextField-root:has(input[data-testid="date-field"][name^="date"])',
           meta: expectedMeta,
         },
         childContainers: [],
@@ -113,14 +114,15 @@ describe("date-field detector", () => {
       const result = dateFieldDetector.detect(el, $);
 
       const expectedMeta: DateFieldMeta = {
-        input: 'input[name^="birthDate"]',
+        input: 'input[name="birthDate"]',
+        label: "Date",
       };
 
       expect(result).toEqual({
         node: {
           type: "field",
           kind: "date-field",
-          path: '.MuiTextField-root:has(input[data-testid="date-field"][name^="birthDate"])',
+          path: '.MuiTextField-root:has(input[data-testid="date-field"][name="birthDate"])',
           meta: expectedMeta,
         },
         childContainers: [],

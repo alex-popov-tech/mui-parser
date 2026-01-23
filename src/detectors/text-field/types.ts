@@ -19,6 +19,12 @@ export interface TextFieldMeta {
    * The HTML input type (text, url, email, tel, search).
    */
   inputType: TextLikeInputType;
+
+  /**
+   * The field's label text.
+   * Optional: Only present when the HTML contains a label element.
+   */
+  label?: string;
 }
 
 /**

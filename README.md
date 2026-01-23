@@ -111,9 +111,10 @@ This bundles the parsed result with its documentation, making it self-contained 
         {
           "type": "field",
           "kind": "text-field",
-          "path": "[data-testid=\"text-field\"]:has(input[name^=\"title\"])",
+          "path": "[data-testid=\"text-field\"]:has(input[name=\"title\"])",
           "meta": {
-            "input": "input[name^=\"title\"]"
+            "input": "input[name=\"title\"]",
+            "inputType": "text"
           }
         }
       ]

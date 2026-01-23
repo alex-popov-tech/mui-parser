@@ -112,6 +112,13 @@ const UNSUPPORTED_INPUT_TYPE = `<div class="MuiTextField-root" data-testid="text
   </div>
 </div>`;
 
+// Valid text field without label
+const VALID_TEXT_FIELD_NO_LABEL = `<div class="MuiFormControl-root MuiTextField-root" data-testid="text-field">
+  <div class="MuiInputBase-root MuiOutlinedInput-root">
+    <input type="text" name="hiddenField" class="MuiInputBase-input MuiOutlinedInput-input" value="">
+  </div>
+</div>`;
+
 describe("text-field detector", () => {
   describe("valid detection", () => {
     it("detects valid text field with localized name", () => {
@@ -121,6 +128,7 @@ describe("text-field detector", () => {
       const expectedMeta: TextFieldMeta = {
         input: 'input[name^="localisedName"]',
         inputType: "text",
+        label: "Event Name",
       };
 
       expect(result).toEqual({
@@ -139,15 +147,16 @@ describe("text-field detector", () => {
       const result = textFieldDetector.detect(el, $);
 
       const expectedMeta: TextFieldMeta = {
-        input: 'input[name^="username"]',
+        input: 'input[name="username"]',
         inputType: "text",
+        label: "Username",
       };
 
       expect(result).toEqual({
         node: {
           type: "field",
           kind: "text-field",
-          path: '[data-testid="text-field"]:has(input[name^="username"])',
+          path: '[data-testid="text-field"]:has(input[name="username"])',
           meta: expectedMeta,
         },
         childContainers: [],
@@ -161,6 +170,7 @@ describe("text-field detector", () => {
       const expectedMeta: TextFieldMeta = {
         input: 'input[name^="website"]',
         inputType: "url",
+        label: "Website",
       };
 
       expect(result).toEqual({
@@ -179,15 +189,16 @@ describe("text-field detector", () => {
       const result = textFieldDetector.detect(el, $);
 
       const expectedMeta: TextFieldMeta = {
-        input: 'input[name^="email"]',
+        input: 'input[name="email"]',
         inputType: "email",
+        label: "Email",
       };
 
       expect(result).toEqual({
         node: {
           type: "field",
           kind: "text-field",
-          path: '[data-testid="text-field"]:has(input[name^="email"])',
+          path: '[data-testid="text-field"]:has(input[name="email"])',
           meta: expectedMeta,
         },
         childContainers: [],
@@ -199,15 +210,16 @@ describe("text-field detector", () => {
       const result = textFieldDetector.detect(el, $);
 
       const expectedMeta: TextFieldMeta = {
-        input: 'input[name^="phone"]',
+        input: 'input[name="phone"]',
         inputType: "tel",
+        label: "Phone",
       };
 
       expect(result).toEqual({
         node: {
           type: "field",
           kind: "text-field",
-          path: '[data-testid="text-field"]:has(input[name^="phone"])',
+          path: '[data-testid="text-field"]:has(input[name="phone"])',
           meta: expectedMeta,
         },
         childContainers: [],
@@ -219,15 +231,36 @@ describe("text-field detector", () => {
       const result = textFieldDetector.detect(el, $);
 
       const expectedMeta: TextFieldMeta = {
-        input: 'input[name^="query"]',
+        input: 'input[name="query"]',
         inputType: "search",
+        label: "Search",
       };
 
       expect(result).toEqual({
         node: {
           type: "field",
           kind: "text-field",
-          path: '[data-testid="text-field"]:has(input[name^="query"])',
+          path: '[data-testid="text-field"]:has(input[name="query"])',
+          meta: expectedMeta,
+        },
+        childContainers: [],
+      });
+    });
+
+    it("detects text field without label (label is optional)", () => {
+      const { el, $ } = createContext(VALID_TEXT_FIELD_NO_LABEL);
+      const result = textFieldDetector.detect(el, $);
+
+      const expectedMeta: TextFieldMeta = {
+        input: 'input[name="hiddenField"]',
+        inputType: "text",
+      };
+
+      expect(result).toEqual({
+        node: {
+          type: "field",
+          kind: "text-field",
+          path: '[data-testid="text-field"]:has(input[name="hiddenField"])',
           meta: expectedMeta,
         },
         childContainers: [],
