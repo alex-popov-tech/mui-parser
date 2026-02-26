@@ -12,24 +12,16 @@ export const imageFieldDetector: Detector = {
       return null;
     }
 
-    // Extract label text (validation already confirmed it exists and is non-empty)
-    const $el = $(el);
-    const label = $el.find("label.MuiInputLabel-root");
-    const labelText = label.text().trim();
-
     const meta: ImageFieldMeta = {
-      label: "label.MuiInputLabel-root",
-      preview: 'img[class*="ImagePreview_previewImage"]',
-      fileInput: 'input[data-testid="file-input"]',
-      uploadButton: '[data-testid="file-change-action"]',
-      removeButton: '[data-testid="file-remove-action"]',
+      input: 'input[type="file"]',
+      img: "img",
     };
 
     return {
       node: {
         type: "field",
         kind: "image-field",
-        path: `div[class*="ImageField_wrapper"]:has-text("${labelText}")`,
+        path: '[class^="ImageField"]',
         meta,
       },
       childContainers: [],

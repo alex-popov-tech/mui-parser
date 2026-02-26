@@ -5,34 +5,16 @@ import type { GatheredNode } from "../../types";
  */
 export interface ImageFieldMeta {
   /**
-   * Selector for the label element (relative to path).
-   * Value: Read from text content to get field name.
-   */
-  label: string;
-
-  /**
-   * Selector for the preview image element (relative to path).
-   * Value: Read from `src` attribute. Element only exists when image is uploaded.
-   */
-  preview: string;
-
-  /**
    * Selector for the hidden file input (relative to path).
    * Used for uploading files programmatically.
    */
-  fileInput: string;
+  input: string;
 
   /**
-   * Selector for the upload/change button (relative to path).
-   * Text is "Choose file" when no image, "Change file" when image exists.
+   * Selector for the preview image element (relative to path).
+   * Used to assert upload completion (image becomes visible after upload).
    */
-  uploadButton: string;
-
-  /**
-   * Selector for the remove button (relative to path).
-   * Only exists when an image is uploaded.
-   */
-  removeButton: string;
+  img: string;
 }
 
 /**
